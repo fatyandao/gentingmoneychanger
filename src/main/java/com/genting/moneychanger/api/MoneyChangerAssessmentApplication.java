@@ -27,7 +27,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages={"com.genting.moneychanger.api.controller","com.genting.moneychanger.api","com.genting.moneychanger.api.dao", "com.genting.moneychanger.model"})
+@SpringBootApplication(scanBasePackages={"com.genting.moneychanger.api.config","com.genting.moneychanger.api.controller","com.genting.moneychanger.api","com.genting.moneychanger.api.dao", "com.genting.moneychanger.model"})
 public class MoneyChangerAssessmentApplication {
 	private static final Logger log = LoggerFactory.getLogger(MoneyChangerAssessmentApplication.class);
 
