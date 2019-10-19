@@ -3,11 +3,13 @@ package com.genting.moneychanger.api.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.genting.moneychanger.api.dao.TransactionRepository;
-import com.genting.moneychanger.api.models.Transaction;
+import com.genting.moneychanger.api.model.Currency;
+import com.genting.moneychanger.api.model.Transaction;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,18 +27,17 @@ public class TransactionController {
 		this.repository = repository;
 	}
 
-
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public String index() {
-		return "Sorry, this link is not assessible.";
+	@RequestMapping("/")
+	public String test() {
+		return "Sorryasd, this link is not assessible.";
 	}
 
 
-	@RequestMapping(value = "/transactions", method = RequestMethod.POST)
-	Transaction newTransaction(@RequestParam long currencyPairId, 
-			long depositCurrencyId, 
-			long dispenseCurrencyId, 
-			long changeCurrencyId ) {
+
+
+	@RequestMapping(value = "/transactions", method = RequestMethod.POST, consumes = "application/json")
+	@ResponseBody
+	Transaction addTransaction(@RequestBody Transaction transaction) {
 		Transaction trn = new Transaction();
 		
 		return repository.save(trn);
