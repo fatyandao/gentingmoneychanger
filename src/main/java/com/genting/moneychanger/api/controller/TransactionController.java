@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class TransactionController {
 	
@@ -35,12 +39,12 @@ public class TransactionController {
 
 
 
-	@RequestMapping(value = "/transactions", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/transaction", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseBody
 	Transaction addTransaction(@RequestBody Transaction transaction) {
-		Transaction trn = new Transaction();
-		
-		return repository.save(trn);
+//		Transaction trn = new Transaction();
+		transaction.setCreatedOn(new Date());
+		return repository.save(transaction);
 	}
 	
 	

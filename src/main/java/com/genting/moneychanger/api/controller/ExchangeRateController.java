@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import com.genting.moneychanger.api.dao.ExchangeRateRepository;
 import com.genting.moneychanger.api.model.Currency;
 import com.genting.moneychanger.api.model.ExchangeRate;
 
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 public class ExchangeRateController {
 	

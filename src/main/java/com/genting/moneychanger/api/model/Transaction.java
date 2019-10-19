@@ -1,6 +1,6 @@
 package com.genting.moneychanger.api.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,23 +9,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+
 
 
 @Entity 
 public class Transaction {
 
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", depositCurrency=" + depositCurrency
+				+ ", depositAmount=" + depositAmount + ", dispenseCurrency=" + dispenseCurrency + ", dispenseAmount="
+				+ dispenseAmount + ", changeCurrency=" + changeCurrency + ", changeAmount=" + changeAmount
+				+ ", createdOn=" + createdOn + "]";
+	}
 	public Transaction() {
 		
 	}
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long transactionId;
+	
+	@NotEmpty(message = "Please enter the Deposit Currency.")
 	private String depositCurrency;
+//	@NotEmpty(message = "Please enter the Deposit Amount.")
 	private BigDecimal depositAmount;
+	
+	@NotEmpty(message = "Please enter the Dispense Currency.")
 	private String dispenseCurrency;
+//	@DecimalMax("30.00",(message = "Please enter the Dispense Amount.")
 	private BigDecimal dispenseAmount;
-	private String changeCurrency;
+	
+	
+	private String changeCurrency;	
 	private BigDecimal changeAmount;
+	
+	
 	private Date createdOn;
 	
 	public long getTransactionId() {
