@@ -19,7 +19,7 @@ https://github.com/fatyandao/moneychanger-ui
 - UI for Display Exchange Rates
 - UI to submit transactions
 
-#Deployment Instructions
+##Deployment Instructions
 This is best run in Eclipse with Spring Tools Suites inserted.
 However, you can use the Maven build and run the jar accordingly.
 
@@ -27,3 +27,6 @@ mvn spring-boot:run
 
 #Unit Testing Instructions
 mvn test
+
+The swagger documentation can be found here:
+http://localhost:8086/swagger-ui.html
